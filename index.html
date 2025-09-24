@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KEL DESIGN STUDIO LLC — Specialized Design Services</title>
+  <meta name="description" content="KEL DESIGN STUDIO LLC: specialized design for complex products and regulated brands. Brand systems, product & data UX, packaging & environmental graphics." />
+  <style>
+    /* ---------------------------
+       DESIGN TOKENS
+       --------------------------- */
+    :root{
+      --bg:#0b0f14;
+      --bg-2:#0e141d;
+      --card:#121a25;
+      --ink:#eaf2ff;
+      --muted:#a3b6cf;
+      --accent:#b9ff66;
+      --accent-2:#66ffd2;
+      --stroke:#203147;
+      --max:1180px;
+
+      --r-xs:8px;
+      --r-sm:12px;
+      --r-md:16px;
+      --shadow:0 10px 40px rgba(0,0,0,.35);
+
+      --fs-hero: clamp(40px, 6.8vw, 68px);
+      --fs-h2: clamp(26px, 3.2vw, 34px);
+      --fs-h3: clamp(18px, 2vw, 22px);
+      --fs-lead: clamp(18px, 2.3vw, 22px);
+      --fs-body: 17px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(880px 420px at 80% -10%, rgba(102,255,210,.10), transparent 60%),
+        radial-gradient(680px 380px at 20% -10%, rgba(185,255,102,.10), transparent 60%),
+        var(--bg);
+      line-height:1.65;
+      font-size: var(--fs-body);
+    }
+
+    a{color:var(--accent); text-decoration:none}
+    a:hover{opacity:.9}
+
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 22px}
+
+    /* ---------------------------
+       NAVIGATION
+       --------------------------- */
+    .top{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(8px);
+      border-bottom:1px solid var(--stroke);
+      background:linear-gradient(180deg, rgba(13,18,25,.85), rgba(13,18,25,.65));
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:18px; padding:14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; font-weight:900; letter-spacing:.2px;
+    }
+    .brand .dot{height:10px; width:10px; background:var(--accent); border-radius:50%}
+    .nav-links{display:flex; gap:10px; flex-wrap:wrap}
+    .chip{
+      display:inline-flex; padding:9px 14px; border:1px solid var(--stroke);
+      border-radius:999px; color:#dff6ff; background:#0f1620;
+    }
+    .chip:hover{background:#101a27}
+    .cta-mini{margin-left:auto; display:flex; gap:12px}
+    .btn{
+      appearance:none; cursor:pointer; border:1px solid var(--stroke);
+      border-radius:10px; padding:11px 16px; font-weight:800;
+      background:var(--accent); color:#0b0f14; box-shadow:var(--shadow);
+    }
+    .btn.alt{background:#101723; color:var(--ink)}
+    .btn:hover{transform:translateY(-1px)}
+
+    /* ---------------------------
+       HERO
+       --------------------------- */
+    header.hero{
+      padding:72px 0 36px;
+      border-bottom:1px solid var(--stroke);
+    }
+    .pill{
+      display:inline-block; padding:6px 12px; border-radius:999px;
+      border:1px solid var(--stroke); color:var(--accent); background:#121b27; font-weight:700; letter-spacing:.3px
+    }
+    h1{font-size:var(--fs-hero); line-height:1.05; margin:16px 0 10px}
+    .lead{font-size:var(--fs-lead); color:#d9e8ff; max-width:960px}
+    .cta{display:flex; gap:12px; margin-top:22px; flex-wrap:wrap}
+
+    /* ---------------------------
+       LAYOUT HELPERS
+       --------------------------- */
+    section{padding:64px 0}
+    h2{font-size:var(--fs-h2); margin:0 0 18px}
+    h3{font-size:var(--fs-h3); margin:12px 0}
+    .muted{color:var(--muted)}
+    .grid{display:grid; gap:22px}
+    .g-2{grid-template-columns:1.2fr .8fr}
+    .g-3{grid-template-columns:repeat(3,1fr)}
+    .center{display:grid; place-items:center}
+
+    /* ---------------------------
+       CARDS / PHOTOS
+       --------------------------- */
+    .card{
+      background:linear-gradient(180deg, #111823, #0e1420);
+      border:1px solid var(--stroke);
+      border-radius: var(--r-md);
+      padding:24px;
+      box-shadow:var(--shadow);
+      min-height: 100%;
+    }
+    figure{margin:0}
+    .photo{
+      min-height:300px; border-radius: var(--r-md); border:1px solid var(--stroke);
+      background:#09121a url('https://images.unsplash.com/photo-1558655146-9f40138edfeb?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+      box-shadow:var(--shadow);
+    }
+    .photo.alt{
+      background-image:url('https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1600&auto=format&fit=crop')
+    }
+
+    /* ---------------------------
+       SERVICE LIST
+       --------------------------- */
+    .tag{font-weight:800; color:var(--accent-2); letter-spacing:.18em; font-size:12px; text-transform:uppercase}
+    .svc{display:flex; flex-direction:column; gap:8px}
+    .svc p{margin:0}
+
+    /* ---------------------------
+       PROCESS STEPS
+       --------------------------- */
+    .step{
+      position:relative; padding-left:54px;
+    }
+    .step::before{
+      content:attr(data-num);
+      position:absolute; left:0; top:0;
+      height:36px; width:36px; border-radius:50%;
+      display:grid; place-items:center;
+      border:1px solid var(--stroke); color:#0b0f14; background:var(--accent); font-weight:900;
+    }
+
+    /* ---------------------------
+       FORM + TOAST
+       --------------------------- */
+    form{display:grid; gap:14px}
+    label>span{display:block; font-size:13px; color:var(--muted); margin-bottom:6px}
+    input, textarea{
+      width:100%;
+      background:#0f1520; color:var(--ink);
+      border:1px solid var(--stroke); padding:13px 14px; border-radius:10px; outline:none;
+      font-size:16px;
+    }
+    textarea{min-height:140px; resize:vertical}
+    input:focus, textarea:focus{border-color:#2f4d6f; box-shadow:0 0 0 3px rgba(102,255,210,.15)}
+    .submit-row{display:flex; gap:12px; align-items:center; flex-wrap:wrap}
+    .small{font-size:12px}
+
+    /* Toast (notification window) */
+    .toast{
+      position: fixed; right:22px; bottom:22px; z-index:100;
+      background: #0f1a27; color: var(--ink);
+      border:1px solid var(--stroke); border-radius: 12px;
+      padding:16px 18px; width:min(420px, 86vw);
+      box-shadow: var(--shadow);
+      transform: translateY(20px); opacity:0; pointer-events:none;
+      transition: all .25s ease;
+    }
+    .toast.show{transform: translateY(0); opacity:1; pointer-events:auto}
+    .toast strong{color:var(--accent)}
+    .toast .close{
+      position:absolute; top:8px; right:10px; background:none; border:none; color:var(--muted); font-size:20px; cursor:pointer
+    }
+
+    /* ---------------------------
+       FOOTER
+       --------------------------- */
+    footer{
+      padding:30px 0 80px;
+      border-top:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(10,14,18,0.6), rgba(10,14,18,0.9));
+      color:var(--muted);
+    }
+    .legal{
+      margin-top:10px;
+      font-size: clamp(16px, 2.2vw, 22px);   /* Enlarged as requested */
+      color:#d2e6ff;
+      font-weight:700;
+    }
+
+    /* ---------------------------
+       RESPONSIVE TUNING
+       Keep everything proportionate on small screens
+       --------------------------- */
+    @media (max-width: 980px){
+      .g-2{grid-template-columns:1fr}
+      .nav{flex-wrap:wrap}
+      .cta-mini{order:3; width:100%; justify-content:flex-start}
+    }
+    @media (max-width: 560px){
+      .nav-links{gap:8px}
+      .btn{width:100%}
+      .cta{flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION with topic buttons -->
+  <div class="top">
+    <div class="wrap nav">
+      <div class="brand">
+        <span class="dot"></span>
+        <span>KEL DESIGN STUDIO LLC</span>
+      </div>
+      <nav class="nav-links" aria-label="Primary">
+        <a class="chip" href="#services">Brand Systems</a>
+        <a class="chip" href="#edge">Why Us</a>
+        <a class="chip" href="#process">Process</a>
+        <a class="chip" href="#contact">Contact</a>
+      </nav>
+      <div class="cta-mini">
+        <a class="btn alt" href="#about">About</a>
+        <a class="btn" href="#contact">Start a project</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. MAIN / HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <span class="pill">Specialized Design Services</span>
+      <h1>Specialized Design for complex products and regulated brands.</h1>
+      <p class="lead">
+        We craft brand systems, interfaces, and environments for teams who can’t afford ambiguity—finance,
+        healthcare, manufacturing, and B2B SaaS. From a single diagnostic dashboard to a multi-site signage
+        program, we translate constraints into clarity.
+      </p>
+      <div class="cta">
+        <a class="btn" href="#contact">Send brief</a>
+        <a class="btn alt" href="#services">See what we do</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. ABOUT -->
+  <section id="about">
+    <div class="wrap grid g-2">
+      <div class="card">
+        <h2>Who We Are</h2>
+        <p>
+          KEL DESIGN STUDIO LLC is a boutique, execution-first practice based in Park Ridge, Illinois.
+          We partner with organizations that operate under compliance, safety, or deep technical complexity.
+          Our team blends brand strategy with design ops so approvals are painless and outcomes are measurable.
+          We’ve built medical device UI libraries that pass audits, wayfinding systems that shorten patient travel time,
+          and packaging spec sheets manufacturers actually use.
+          We work directly with engineering, legal, and procurement to remove risk and deliver clarity.
+        </p>
+      </div>
+      <figure class="photo" aria-label="Studio preview image"></figure>
+    </div>
+  </section>
+
+  <!-- 3. SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <h2>Specialties that move needles</h2>
+      <div class="grid g-3">
+        <div class="card svc">
+          <div class="tag">01 — Regulated Brand Systems</div>
+          <h3>From logo to label copy</h3>
+          <p>
+            We build brand toolkits for finance & healthcare where every pixel may be evidence.
+            Deliverables include nomenclature rules, compliant color systems (WCAG AA/AAA),
+            and production-ready templates mapped to your real communication channels.
+          </p>
+        </div>
+        <div class="card svc">
+          <div class="tag">02 — Product & Data UX</div>
+          <h3>Interfaces for high-stakes decisions</h3>
+          <p>
+            Dashboards and workflows for IoT, lab instrumentation, and B2B SaaS.
+            Expect information hierarchy, alert design, and micro-interactions documented
+            in a living design system engineers can extend.
+          </p>
+        </div>
+        <div class="card svc">
+          <div class="tag">03 — Packaging & Environmental</div>
+          <h3>From dielines to doors</h3>
+          <p>
+            We create packaging specs, print-ready files, and multi-site wayfinding.
+            Handoff kits include vendor notes, materials, and photo mockups so bids come back apples-to-apples.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. WHY US (PHOTO + BENEFITS) -->
+  <section id="edge">
+    <div class="wrap grid g-2">
+      <figure class="photo alt" aria-label="Project wall image"></figure>
+      <div class="card">
+        <h2>Why teams choose KEL</h2>
+        <div class="grid">
+          <div>
+            <h3>Compliance without the drag</h3>
+            <p class="muted">We design for audit trails—versioned files, rationale notes, and WCAG color proofs—so legal signs off faster.</p>
+          </div>
+          <div>
+            <h3>Engineers love our handoffs</h3>
+            <p class="muted">Tokens, component states, and redlines shipped in Figma, JSON, and SVG—the formats your stack expects.</p>
+          </div>
+          <div>
+            <h3>Outcomes you can measure</h3>
+            <p class="muted">We define a success metric early (time-to-quote, task completion, wayfinding travel time) and design to move it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. PROCESS -->
+  <section id="process">
+    <div class="wrap">
+      <h2>How we work — a three-step, low-risk path</h2>
+      <div class="grid g-3">
+        <div class="card step" data-num="1">
+          <h3>Discovery Sprint</h3>
+          <p>Two weeks to map stakeholders, constraints, and success metrics. We inventory assets and review compliance requirements to remove unknowns early.</p>
+        </div>
+        <div class="card step" data-num="2">
+          <h3>Design & Prove</h3>
+          <p>We prototype key flows/components, test with real users or field staff, and validate accessibility and production methods before scaling.</p>
+        </div>
+        <div class="card step" data-num="3">
+          <h3>Spec & Rollout</h3>
+          <p>Finalized systems, tokenized libraries, and vendor-ready packages. We support implementation and post-launch measurement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. CONTACT FORM + PHRASES -->
+  <section id="contact">
+    <div class="wrap grid g-2">
+      <div class="card">
+        <h2>Tell us about your challenge</h2>
+        <p class="muted">Suggested form phrases you can use:</p>
+        <ul class="muted">
+          <li>“We need a compliant brand system for a healthcare product.”</li>
+          <li>“Our ops team can’t read the current dashboard—can you redesign the data hierarchy?”</li>
+          <li>“Looking for packaging specs vendors can quote without surprises.”</li>
+          <li>“We have strict accessibility targets (WCAG AA/AAA).”</li>
+          <li>“Timeline and budget guardrails are…”</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <form id="inquiryForm" novalidate>
+          <label>
+            <span>Your name</span>
+            <input name="name" placeholder="Full name" required />
+          </label>
+          <label>
+            <span>Work email</span>
+            <input name="email" type="email" placeholder="name@company.com" required />
+          </label>
+          <label>
+            <span>Company</span>
+            <input name="company" placeholder="Organization / Team" />
+          </label>
+          <label>
+            <span>How can we help?</span>
+            <textarea name="message" placeholder="Briefly describe your product, constraints, and timeline." required></textarea>
+          </label>
+          <div class="submit-row">
+            <button class="btn" type="submit">Send inquiry</button>
+            <span class="small muted">By submitting, you’ll get a reply from <strong>emilie@hoffmandesignstudio.info</strong>.</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. CONTACTS -->
+  <footer id="contacts">
+    <div class="wrap">
+      <strong>KEL DESIGN STUDIO LLC</strong><br />
+      2600 Windsor Mall APT 1A, Park Ridge, IL, 60068-3632, United States<br />
+      Email: <a href="mailto:emilie@hoffmandesignstudio.info">emilie@hoffmandesignstudio.info</a>
+      <div class="legal">2025 KEL DESIGN STUDIO LLC — All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Toast / Notification -->
+  <div class="toast" id="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <button class="close" aria-label="Close" onclick="hideToast()">×</button>
+    <strong>Thank you!</strong>
+    <div>Your inquiry was captured. We’ll respond from <em>emilie@hoffmandesignstudio.info</em> within 1–2 business days.</div>
+  </div>
+
+  <script>
+    // Keep proportions by locking a readable max line length on big screens
+    (function enforceMeasure(){
+      const paragraphs = document.querySelectorAll('p, li');
+      paragraphs.forEach(p => p.style.maxWidth = '78ch');
+    })();
+
+    // Simple form validation + toast notification
+    const form = document.getElementById('inquiryForm');
+    const toast = document.getElementById('toast');
+
+    function showToast(){
+      toast.classList.add('show');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(()=> toast.classList.remove('show'), 6000);
+    }
+    function hideToast(){ toast.classList.remove('show'); }
+
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const data = new FormData(form);
+      const name = (data.get('name') || '').trim();
+      const email = (data.get('email') || '').trim();
+      const message = (data.get('message') || '').trim();
+
+      // front-end validation
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      if(!name || !emailOk || !message){
+        alert('Please fill your name, a valid work email, and a short message.');
+        return;
+      }
+
+      // here you could POST to a backend; we simulate success:
+      form.reset();
+      showToast();
+    });
+
+    // Smooth scroll for in-page links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el){
+          e.preventDefault();
+          window.scrollTo({top: el.offsetTop - 70, behavior:'smooth'});
+        }
+      });
+    });
+
+    // Replace year in case you duplicate footer elsewhere
+    // (kept simple: text already says 2025 as requested)
+  </script>
+</body>
+</html>
